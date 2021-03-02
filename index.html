@@ -17,12 +17,15 @@
       </a>
       <a href="javascript:void(0)" onclick="openTab('Video');" class="w3-button w3-bar-item">Video</a>
       <a href="http://forum.openmarine.net/forumdisplay.php?fid=17" class="w3-button w3-bar-item">Forum</a>
-      <a href="https://github.com/pypilot/pypilot/wiki" class="w3-button w3-bar-item">Wiki</a>
+      <a href="http://pypilot.org/wiki" class="w3-button w3-bar-item">Wiki</a>
       <a href="javascript:void(0)" onclick="openTab('Download');" class="w3-button w3-bar-item">
         Download
       </a>
       <a href="http://github.com/pypilot/pypilot" class="w3-button w3-bar-item">Code</a>
-      <a href="https://pypilot.0337ml-user.freehosting.host/store/" class="w3-button w3-bar-item">Store</a>
+<!--
+            <a href="javascript:void(0)" onclick="openTab('Store');" class="w3-button w3-bar-item">Store</a>
+-->
+<a href="https://pypilot.org/store" class="w3-button w3-bar-item">Store</a>
     </div>
     <br>
 <!--
@@ -45,7 +48,9 @@
       <H2>pypilot is an open source marine autopilot.</H2>
     <p>
       <ul>        
-        <li>Included in the popular <a href="http://www.sailoog.com/">Open Plotter</a> Chart plotter system for raspberry pi</li>
+        <li>Included in the popular <li>Included in the popular <a href="https://openmarine.net/openplotter">Open Plotter</a> Chart plotter system for
+        <li>Tested with success on ocean passages from the virgin islands to Maine.</li>
+        ARM computers like Raspberry Pi</li>
         <li>Tested with success on ocean passages from the virgin islands to Maine.</li>
       </ul>
 
@@ -81,7 +86,7 @@
         </H4>
       </p>
       <H4>
-      Also consider a donation as this is free software.  Donations are greatly appreciated and enable me to experiment with new sensors or hardware and create future projects.  I am hoping to build a free software sonar and much more</H4>
+      Also consider a donation as this is free software.  Donations are greatly appreciated and enable me to experiment with new sensors or hardware and create future projects.</H4>
          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="hosted_button_id" value="N7EJ9T9G8VVJ6">
@@ -90,8 +95,19 @@
          </form>
     </div>
 
+    <div id="Video" class="w3-container tab">
+      <h3>Sailing</h3>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ZaLBRRelT-M" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <br>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/KQuBwLSMSxI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> 
+      <h3>Setup</h3>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/7TdXImMFTZk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <br>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/au9oZ_-Qces" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
     
     <div id="Download" class="w3-container tab">
+      <p>Review <a href="http://pypilot.org/wiki/doku.php?id=upgrade_software">upgrading pypilot</a> guide prior to overwriting an existing image.
     <p>
       <H2>Openplotter image</H2>
       <p><a href="http://sailoog.com/openplotter">Openplotter</a>
@@ -100,9 +116,9 @@
     <p>
       <H2>Tinypilot image</H2>
       Disk images
-      <p>Current <a href="https://mega.nz/#!OGhRXaDD!DNcI6gBKracLeJakZiYa2HuxHssLEKUhePZbDFlx-t4">tinypilot-18062018.img.xz</a>
-      <p>Previous <a href="https://mega.nz/#!qOYwlB4L!vMt0ct38ZH6WRCMDQN4p_6Rl261D2mNAIydAZmwffCU">tinypilot-28022018.img.xz</a>
-      <p>This image is compressed with xz and first must be extracted.
+    <p>Previous <a href="download.php?Down=images/tinypilot_21122019.img.xz" target="_new">tinypilot_21122019.img.xz</a>      
+    <p>Current <a href="download.php?Down=images/tinypilot_2020_10_27.img.xz" target="_new">tinypilot_2020_10_27.img.xz</a>
+    <p>This image is compressed with xz and first must be extracted.
         <p>With linux, you can extract with unxz then write the image,
           or use xzcat directly.
           be sure to replace /dev/sda with device of sdcard,
@@ -113,20 +129,20 @@
       For windows, try winrar or 7zip to extract.
       <p>See the raspberry <a href="https://www.raspberrypi.org/documentation/installation/installing-images/">documentation</a> for writing disk images.
       
-      <p>Tinypilot is a special linux distribution based on <a href="http://www.tinycorelinux.net/">tinycore linux</a>  This is more stable than openplotter and light weight running out of ram.  It works well on the single core raspberry zero and zero-W, but can also work on any raspberry pi.
+      <p>Tinypilot is a special linux distribution based on <a href="http://www.tinycorelinux.net/">tinycore linux</a>  This is more stable than openplotter and light weight running out of ram.  It works well on the single core raspberry zero and zero-W.   Tinypilot is supported on raspberry 0, 1, 2, 3, but not 3+ or 4 (yet) for these you can use openplotter to run pypilot.
       <p>Requires inertial sensors, preferably mpu9255 or mpu9250. Optional to connect a nokia5110 LCD display to the spi pins, and to use a 4 or 5 button keypad wire to gpio.  Also an optional IR sensor on GPIO pin 4 can be used by any TV remote.
-    </p>
+      </p>
+      <H2>OpenCPN Plugin</H2>
+      <p>For controlling and configuring pypilot.
+      <p>Windows: <a href="https://ci.appveyor.com/project/seandepagnier/pypilot-pi/build/artifacts">https://ci.appveyor.com/project/seandepagnier/pypilot-pi/build/artifacts</a>
+        <p>For other OS compile from git <a href="https://github.com/pypilot/pypilot_pi">https://github.com/pypilot/pypilot_pi</a>
     </div>
     
-    <div id="Video" class="w3-container tab">
-      <h3>Sailing</h3>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/ZaLBRRelT-M" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      <br>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/KQuBwLSMSxI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> 
-      <h3>Setup</h3>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/7TdXImMFTZk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      <br>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/au9oZ_-Qces" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <div id="Store" class="w3-container tab">
+      <p>I am sold out!
+        <p>If you order from the store, the lead time is 6-8 weeks at this time as I am awaiting more parts.
+
+        <p><a href="https://pypilot.org/store">Continue</a> to the store.
     </div>
     
     <footer><ul><li>&nbsp;pypilot is developed under the <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GPLv3</a></li><li>Written by <a href="http://seandepagnier.users.sourceforge.net/">Sean D'Epagnier</a>.</li></ul></footer>
