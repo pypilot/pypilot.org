@@ -1,0 +1,53 @@
+body {
+  background-image: url('/img/kraken-33.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+
+ul li {
+    margin-bottom: 1vw;
+}
+
+.box {
+    position: absolute;
+    max-width: 45%;
+    margin: 10px;
+    background-color: white;
+    border-radius: 15px;
+    opacity: 90%;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+.box-left {
+    left: -40vw;
+    animation-name: moveInFromLeft;
+}
+
+.box-right {
+    right: -40vw;
+    animation-name: moveInFromRight;
+}
+
+@keyframes moveInFromLeft {
+    0% {
+        left: -40vw;
+    }
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes moveInFromRight {
+    0% {
+        right: -40vw;
+    }
+    100% {
+        right: 0;
+    }
+}
+

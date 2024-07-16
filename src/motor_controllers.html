@@ -1,0 +1,47 @@
+{% extends "layouts/base.html" %} 
+{% block content %}
+<link rel="stylesheet" href="/css/motor_controllers.css">
+<div class='col2-grid'>
+  <img class="image-swap" def='regular-controller-cover.jpg' hover='regular-controller.jpg'>
+  <div>
+    <h3>pypilot motor controller</h3>
+  <ul>
+    <li>Handles up to 7 amps, 12 volt motors continuous</li>
+    <li>Suitable for most tiller-steered boats, but can also be used for wheel steering</li>
+  </ul>
+  </div>
+  <img class="image-swap" def='midpower-controller-cover.jpg' hover='midpower-controller.jpg'>
+  <div>
+    <h3>mid-power motor controller</h3>
+  <ul>
+    <li>Handles up to 15 amps, 12/24 volts</li>
+    <li>Suitable for larger linear actuators and smaller hydraulic pumps</li>
+  </ul>
+  </div>
+  <img class="image-swap" def='highpower-controller-cover.jpg' hover='highpower-controller.jpg'>
+  <div>
+    <h3>High power motor controller</h3>
+  <ul>
+    <li>Handles up to 15 amps, 12/24 volts</li>
+    <li>Suitable for larger linear actuators and smaller hydraulic pumps</li>
+  </ul>
+  </div>
+</div>
+
+
+<script>
+  const collection = document.getElementsByClassName("image-swap");
+  let path = '/images/products/'
+  for (let i = 0; i < collection.length; i++) {
+      collection[i].src = path+collection[i].attributes['def'].value;
+      collection[i].addEventListener('mouseover', function () {
+          collection[i].src = path+collection[i].attributes['hover'].value;
+      });
+
+      collection[i].addEventListener('mouseout', function () {
+          collection[i].src = path+collection[i].attributes['def'].value;
+      });
+  }
+</script>
+
+{% endblock %}

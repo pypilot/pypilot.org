@@ -1,0 +1,106 @@
+{% extends "layouts/base.html" %} 
+{% block content %}
+<link rel="stylesheet" href="/css/autopilots.css">
+<div class="outer-container">
+    <div class="image-container">
+      <img src='/img/products/computer_diagram.jpg' id='main-image' style="max-width: 100%">
+      <img src='/img/products/computer_diagram_map.png' id='map-image' class='image-map'>
+        <canvas id="highlight-canvas" class="highlight"></canvas>
+    </div>
+    <canvas id="map-canvas"></canvas>
+    </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const mainImage = document.getElementById('main-image');
+    const mapImage = document.getElementById('map-image');
+    const highlightCanvas = document.getElementById('highlight-canvas');
+    const highlightCtx = highlightCanvas.getContext('2d');
+    const mapCanvas = document.getElementById('map-canvas');
+    const mapCtx = mapCanvas.getContext('2d');
+
+    const links = {
+        '255,0,0': '/autopilot_computer', // Red
+        '0,255,0': '/motor_controllers', // Green
+        '0,0,255': '/actuators', // Blue
+        '255,255,0': '/control_panels' // Blue
+    };
+
+    mapImage.onload = function () {
+        // Set canvas sizes to match the image size
+        mapCanvas.width = mapImage.naturalWidth;
+        mapCanvas.height = mapImage.naturalHeight;
+        highlightCanvas.width = mapImage.naturalWidth;
+        highlightCanvas.height = mapImage.naturalHeight;
+
+        // Draw the map image onto the hidden canvas
+        mapCtx.drawImage(mapImage, 0, 0);
+    };
+
+      mapImage.addEventListener('mousemove', function (e) {
+        const rect = mapImage.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        // Scale the mouse coordinates to match the canvas size
+        const scaleX = mapImage.naturalWidth / rect.width;
+        const scaleY = mapImage.naturalHeight / rect.height;
+          const canvasX = x;//Math.floor(x * scaleX);
+          const canvasY = y;//Math.floor(y * scaleY);
+
+
+        // Get the pixel data from the canvas
+        const pixel = mapCtx.getImageData(canvasX, canvasY, 1, 1).data;
+        const color = `${pixel[0]},${pixel[1]},${pixel[2]}`;
+        console.log(color);
+          return;
+
+        if (color in links) {
+
+            console.log("HI");
+            // Clear the previous highlight
+            highlightCtx.clearRect(0, 0, highlightCanvas.width, highlightCanvas.height);
+            
+            // Get all pixels from the map image
+            const imageData = mapCtx.getImageData(0, 0, mapCanvas.width, mapCanvas.height);
+            const data = imageData.data;
+
+            // Highlight all matching pixels
+            for (let i = 0; i < data.length; i += 4) {
+
+                if (data[i] === pixel[0] && data[i + 1] === pixel[1] && data[i + 2] === pixel[2]) {
+                    data[i + 3] = 128; // Set alpha to 128 (semi-transparent)
+                } else {
+                    data[i + 3] = 0; // Set alpha to 0 (transparent)
+                }
+            }
+
+            // Put the highlighted image data back on the highlight canvas
+            highlightCtx.putImageData(imageData, 0, 0);
+        } else {
+            // Clear the highlight if no matching color
+            highlightCtx.clearRect(0, 0, highlightCanvas.width, highlightCanvas.height);
+        }
+    });
+
+    mapImage.addEventListener('click', function (e) {
+        const rect = mapImage.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        // Scale the mouse coordinates to match the canvas size
+        const scaleX = mapImage.naturalWidth / rect.width;
+        const scaleY = mapImage.naturalHeight / rect.height;
+        const canvasX = Math.floor(x * scaleX);
+        const canvasY = Math.floor(y * scaleY);
+
+        // Get the pixel data from the canvas
+        const pixel = mapCtx.getImageData(canvasX, canvasY, 1, 1).data;
+        const color = `${pixel[0]},${pixel[1]},${pixel[2]}`;
+
+        if (color in links) {
+            window.location.href = links[color];
+        }
+    });
+});
+</script>
+{% endblock %}

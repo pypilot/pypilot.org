@@ -1,0 +1,19 @@
+<ul class="menu">
+  <li>
+    <a href="/"><img src="{{ site.favicon }}" width="200%"></a>
+  </li>
+  {% for key, val in navigation %}
+  <li>
+    {% if val is string %}
+      <a href="/{{ val }}">{{ key }}</a></li>
+    {% else %}
+      <a href="#">{{ key }}</a>
+      <ul class="submenu">
+        {% for key2, val2 in val %}
+          <li><a href="{{ val2 }}">{{ key2 }}</a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+  </li>
+  {% endfor %}   
+</ul>

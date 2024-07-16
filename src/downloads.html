@@ -1,0 +1,28 @@
+{% extends "layouts/base.html" %} 
+{% block content %}
+<H2>Tinypilot image</H2>
+Disk images
+<p>Latest <a href="download.php?Down=images/tinypilot_2024_06_09.img.xz" target="_new">tinypilot_2024_06_09.img.xz</a>
+<p>Previous (old 2021) <a href="download.php?Down=images/tinypilot_2021_11_16.img.xz" target="_new">tinypilot_2021_11_16.img.xz</a>
+<p>Pi4/Pi zero 2 (stelian's image) <a href="https://www.popies.net/pypilot/tinypilot13-20211126.img.xz">tinypilot13-20211126.img.xz</a>
+
+<p>This image is compressed with xz and first must be extracted.
+<p>With linux, you can extract with unxz then write the image,
+or use xzcat directly.
+be sure to replace /dev/sda with device of sdcard, check the devices with the "df -h" command
+<br><br><b>
+xzcat tinypilot-18062018.img.xz | dd of=/dev/sda bs=4M
+</b>
+<br><br>
+For windows, try winrar or 7zip to extract.
+<p>See the raspberry <a href="https://www.raspberrypi.org/documentation/installation/installing-images/">documentation</a> for writing disk images.
+
+<p>Tinypilot is a special linux distribution based on <a href="http://www.tinycorelinux.net/">tinycore linux</a>  This is more stable than openplotter and light weight running out of ram.  It works well on the single core raspberry zero and zero-W.   Tinypilot is supported on raspberry 0, 1, 2, 3, but not 3+ or 4 (yet) for these you can use openplotter to run pypilot.
+<p>Requires inertial sensors, preferably mpu9255 or mpu9250. Optional to connect a nokia5110 LCD display to the spi pins, and to use a 4 or 5 button keypad wire to gpio.  Also an optional IR sensor on GPIO pin 4 can be used by any TV remote.
+</p>
+<H2>OpenCPN Plugin</H2>
+<p>For controlling and configuring pypilot.
+<p>Windows: <a href="https://ci.appveyor.com/project/seandepagnier/pypilot-pi/build/artifacts">https://ci.appveyor.com/project/seandepagnier/pypilot-pi/build/artifacts</a>
+<p>For other OS compile from git <a href="https://github.com/pypilot/pypilot_pi">https://github.com/pypilot/pypilot_pi</a>
+</div>
+{% endblock %}

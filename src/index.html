@@ -1,0 +1,40 @@
+{% extends "layouts/base.html" %} 
+{% block content %}
+    <link rel="stylesheet" href="/css/home.css">
+    <div class="outer-container">
+    <div class="container" id='container' style='width: 500px'>
+      <div class="box box-left" id="box">
+        <H2>Why pypilot?</H2>
+        <H3>
+        <ul>
+          <li>proven record since 2019</li>
+          <li>community support</li>
+          <li>advanced algorithms</li>
+          <li>free software</li>
+        </ul>
+        </H3>
+      </div>
+      <div class="box box-right">
+        <H2>What do I need?</H2>
+        <H3>
+            <ul>
+              <li>Autopilot Computer</li>
+              <li>Motor Controller</li>
+              <li>Mechanical drive motor</li>
+            </ul>
+      </H3>
+      </div>
+    </div>
+    </div>
+     <script>
+        function adjustContainerHeight() {
+            const container = document.getElementById('container');
+            const expandingRow = document.getElementById('box');
+            //container.style.left = (container.parentElement.offsetWidth - container.offsetWidth)/2 + "px";
+            //container.style.minHeight =expandingRow.offsetHeight+"px";
+        }
+
+        window.onload = adjustContainerHeight;
+        window.onresize = adjustContainerHeight;
+    </script>
+{% endblock %}

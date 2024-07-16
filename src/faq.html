@@ -1,0 +1,28 @@
+{% extends "layouts/base.html" %} 
+{% block content %}
+
+
+<link rel="stylesheet" href="/css/faq.css">
+<div class="outer-container">
+<div class="container">
+<div class="faq-container">
+{% for key, val in faq %}
+<div class="faq-item">
+  <div class="faq-question">{{ key }}</div>
+  <div class="faq-answer">{{ val }}</div>
+</div>
+{% endfor %}
+</div>
+<h5>If you have a questions not answered here, please check the <a href="http://forum.openmarine.net/forumdisplay.php?fid=17">forum</a>
+</div>
+</div>
+<script>
+  document.querySelectorAll('.faq-question').forEach(item => {
+      item.addEventListener('click', () => {
+          const faqItem = item.parentElement;
+          faqItem.classList.toggle('active');
+      });
+  });
+</script>
+
+{% endblock %}

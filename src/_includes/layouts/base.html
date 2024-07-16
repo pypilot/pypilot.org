@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="author" content="{{ site.authorName }}">
+    <meta name="description" content="{{ site.description }}">
+    
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <title>{{ title }}</title>
+    
+  </head>
+  <body>
+    {% include "partials/menu.html" %}
+      {% block content %}{% endblock %}
+    {% include "partials/footer.html" %}
+  </body>
+</html>
