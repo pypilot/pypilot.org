@@ -13,10 +13,11 @@ layout: 'layouts/basic.html'
  6) Author is committed to sustainability (never used an engine sailing over 40,000 miles)
  7) Other autopilot's claim sustainability with nonsense tokenary actions like using one less plastic bag and have few if any of the listed true sustainability features of pypilot, while producing physically larger and less reusable components, then advertising with images of large powerboats making wakes.
 
-   Contact me for a special price if you 1) have no combustion engines onboard  2) have crossed an ocean
+   Contact me for a special price if you have
+  1) no combustion engines onboard
+  2) crossed an ocean
 
-   apply to win a free pypilot electronics setup if you have:
- - (crossed an ocean)
- - have no mechanical propulsion (including electric motors) of any kind, including dinghy.
+   apply to win a free pypilot electronics setup if you have the above including:
+   - no mechanical propulsion (including electric motors) of any kind
    
     The author of pypilot would qualify has been sailing for 15 years without the use of mechanical propulsion and would qualify for this prize.

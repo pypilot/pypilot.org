@@ -4,102 +4,52 @@
 <div class="outer-container">
     <div class="image-container">
       <img src='/img/products/computer_diagram.jpg' id='main-image' style="max-width: 100%">
-      <img src='/img/products/computer_diagram_map.png' id='map-image' class='image-map'>
-        <canvas id="highlight-canvas" class="highlight"></canvas>
+      <h2><span>Click on the picture for more details</span>    <span id='image_item'></span></h2>
     </div>
-    <canvas id="map-canvas"></canvas>
-    </div>
+</div>
 <script>
+  const links = [
+      ['linear actuator', [0, 0], [386, 263], '/actuators'],
+      ['motor controller', [78, 338], [335, 626], '/motor_controllers'],
+      ['autopilot computer', [441, 294], [737, 600], '/autopilot_computer'],
+      ['control panel', [785, 567], [1071, 854], '/control_panels']];
+  const mainImage = document.getElementById('main-image');
+
+  function find_link(e) {
+      const rect = mainImage.getBoundingClientRect();
+      x = e.clientX - rect.left;
+      y = e.clientY - rect.top;
+      
+      // Scale the mouse coordinates to match the canvas size
+      const scaleX = mainImage.naturalWidth / rect.width;
+      const scaleY = mainImage.naturalHeight / rect.height;
+      x = Math.floor(x * scaleX);
+      y = Math.floor(y * scaleY);
+
+
+      for(var i =0; i < links.length; i++) {
+          ca = links[i][1];
+          cb = links[i][2];
+          if(x > ca[0] && y > ca[1] && x < cb[0] && y < cb[1])
+              return i;
+      }
+      return -1;
+  }
+  
   document.addEventListener('DOMContentLoaded', function () {
-    const mainImage = document.getElementById('main-image');
-    const mapImage = document.getElementById('map-image');
-    const highlightCanvas = document.getElementById('highlight-canvas');
-    const highlightCtx = highlightCanvas.getContext('2d');
-    const mapCanvas = document.getElementById('map-canvas');
-    const mapCtx = mapCanvas.getContext('2d');
+      var image_item = document.getElementById('image_item');
+      mainImage.addEventListener('mousemove', function (e) {
+          var i = find_link(e);
+          if(i >= 0)
+              image_item.innerText = links[i][0];
+          else
+              image_item.innerText = '';
+      });
 
-    const links = {
-        '255,0,0': '/autopilot_computer', // Red
-        '0,255,0': '/motor_controllers', // Green
-        '0,0,255': '/actuators', // Blue
-        '255,255,0': '/control_panels' // Blue
-    };
-
-    mapImage.onload = function () {
-        // Set canvas sizes to match the image size
-        mapCanvas.width = mapImage.naturalWidth;
-        mapCanvas.height = mapImage.naturalHeight;
-        highlightCanvas.width = mapImage.naturalWidth;
-        highlightCanvas.height = mapImage.naturalHeight;
-
-        // Draw the map image onto the hidden canvas
-        mapCtx.drawImage(mapImage, 0, 0);
-    };
-
-      mapImage.addEventListener('mousemove', function (e) {
-        const rect = mapImage.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        // Scale the mouse coordinates to match the canvas size
-        const scaleX = mapImage.naturalWidth / rect.width;
-        const scaleY = mapImage.naturalHeight / rect.height;
-          const canvasX = x;//Math.floor(x * scaleX);
-          const canvasY = y;//Math.floor(y * scaleY);
-
-
-        // Get the pixel data from the canvas
-        const pixel = mapCtx.getImageData(canvasX, canvasY, 1, 1).data;
-        const color = `${pixel[0]},${pixel[1]},${pixel[2]}`;
-        console.log(color);
-          return;
-
-        if (color in links) {
-
-            console.log("HI");
-            // Clear the previous highlight
-            highlightCtx.clearRect(0, 0, highlightCanvas.width, highlightCanvas.height);
-            
-            // Get all pixels from the map image
-            const imageData = mapCtx.getImageData(0, 0, mapCanvas.width, mapCanvas.height);
-            const data = imageData.data;
-
-            // Highlight all matching pixels
-            for (let i = 0; i < data.length; i += 4) {
-
-                if (data[i] === pixel[0] && data[i + 1] === pixel[1] && data[i + 2] === pixel[2]) {
-                    data[i + 3] = 128; // Set alpha to 128 (semi-transparent)
-                } else {
-                    data[i + 3] = 0; // Set alpha to 0 (transparent)
-                }
-            }
-
-            // Put the highlighted image data back on the highlight canvas
-            highlightCtx.putImageData(imageData, 0, 0);
-        } else {
-            // Clear the highlight if no matching color
-            highlightCtx.clearRect(0, 0, highlightCanvas.width, highlightCanvas.height);
-        }
-    });
-
-    mapImage.addEventListener('click', function (e) {
-        const rect = mapImage.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        // Scale the mouse coordinates to match the canvas size
-        const scaleX = mapImage.naturalWidth / rect.width;
-        const scaleY = mapImage.naturalHeight / rect.height;
-        const canvasX = Math.floor(x * scaleX);
-        const canvasY = Math.floor(y * scaleY);
-
-        // Get the pixel data from the canvas
-        const pixel = mapCtx.getImageData(canvasX, canvasY, 1, 1).data;
-        const color = `${pixel[0]},${pixel[1]},${pixel[2]}`;
-
-        if (color in links) {
-            window.location.href = links[color];
-        }
+    mainImage.addEventListener('click', function (e) {
+        var i = find_link(e);
+        if(i >= 0)
+            window.location.href = links[i][3];
     });
 });
 </script>

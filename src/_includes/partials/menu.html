@@ -5,7 +5,7 @@
   {% for key, val in navigation %}
   <li>
     {% if val is string %}
-      <a href="/{{ val }}">{{ key }}</a></li>
+      <a href="{{ val }}">{{ key }}</a></li>
     {% else %}
       <a href="#">{{ key }}</a>
       <ul class="submenu">
