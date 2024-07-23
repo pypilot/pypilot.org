@@ -2,6 +2,8 @@ module.exports = function(config) {
   config.addPassthroughCopy("src/css");
   config.addPassthroughCopy("src/js");
   config.addPassthroughCopy("src/img");
+  config.addPassthroughCopy("src/*zip");
+  config.addPassthroughCopy("src/*php");
   config.addPassthroughCopy("src/*txt");
 
     return {

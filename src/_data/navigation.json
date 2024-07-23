@@ -1,0 +1,21 @@
+{
+    "Products":
+    {
+        "Autopilots": "/autopilots",
+        "Multifunction Display": "/mfd",
+        "Wind Instruments": "/wind_instruments"
+    },
+    "Support":
+    {
+        "Downloads": "/downloads",
+        "Documentation": "/doc",
+        "Videos": "/videos",
+        "Frequent Questions": "/faq"
+    },
+    "Community":
+    {
+        "Testimonials": "/testimonials",
+        "Forum": "https://forum.openmarine.net/forumdisplay.php?fid=17"
+    },
+    "Shop": "/opencart"
+}

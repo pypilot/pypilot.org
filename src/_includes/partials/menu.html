@@ -1,11 +1,14 @@
 <ul class="menu">
+  <li class="menu-icon" onclick="toggleMenu()">&#9776;</li>
   <li>
-    <a href="/"><img src="{{ site.favicon }}" width="200%"></a>
+    <a href="/"><img src="/img/favicon.png" width="120%"></a>
   </li>
+  <li class="menu-icon shopping-icon"><a href="/opencart">&#128722;</a></li>
+  
   {% for key, val in navigation %}
-  <li>
+  <li class="menu-item">
     {% if val is string %}
-      <a href="{{ val }}">{{ key }}</a></li>
+      <a href="{{ val }}">{{ key }}</a>
     {% else %}
       <a href="#">{{ key }}</a>
       <ul class="submenu">
@@ -13,7 +16,34 @@
           <li><a href="{{ val2 }}">{{ key2 }}</a></li>
         {% endfor %}
       </ul>
-      {% endif %}
+    {% endif %}
   </li>
   {% endfor %}   
 </ul>
+
+<div class="side-menu" id="sideMenu">
+  <a href="javascript:void(0)" class="close-btn" onclick="toggleMenu()">&times;</a>
+
+  {% for key, val in navigation %}
+    {% if val is string %}
+      <a href="{{ val }}">{{ key }}</a>
+    {% else %}
+      <a>{{ key }}</a>
+      <ul class="submenu-mobile">
+        {% for key2, val2 in val %}
+          <li><a href="{{ val2 }}">{{ key2 }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endfor %}   
+</div>
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+<script>
+  function toggleMenu() {
+      const sideMenu = document.getElementById('sideMenu');
+      const overlay = document.getElementById('overlay');
+      sideMenu.classList.toggle('active');
+      overlay.classList.toggle('active');
+  }
+</script>

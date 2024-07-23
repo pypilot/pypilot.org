@@ -4,7 +4,7 @@
 <div class="outer-container">
     <div class="image-container">
       <img src='/img/products/computer_diagram.jpg' id='main-image' style="max-width: 100%">
-      <h2><span>Click on the picture for more details</span>    <span id='image_item'></span></h2>
+      <h2><span id='image-item'></span></h2>
     </div>
 </div>
 <script>
@@ -37,13 +37,18 @@
   }
   
   document.addEventListener('DOMContentLoaded', function () {
-      var image_item = document.getElementById('image_item');
+      var main_image = document.getElementById('main-image');
+      var image_item = document.getElementById('image-item');
+      
       mainImage.addEventListener('mousemove', function (e) {
           var i = find_link(e);
-          if(i >= 0)
+          if(i >= 0) {
               image_item.innerText = links[i][0];
-          else
-              image_item.innerText = '';
+              main_image.style.cursor = 'pointer';
+          } else {
+              image_item.innerText = 'Click on the picture for more details';
+              main_image.style.cursor = 'default';
+          }
       });
 
     mainImage.addEventListener('click', function (e) {

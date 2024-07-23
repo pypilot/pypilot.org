@@ -1,11 +1,22 @@
 {% extends "layouts/base.html" %} 
 {% block content %}
-<h2>
+<div class="outer-container">
+  <div class="container">
+    <h1>Documentation</h1>
+    <h2>
+    <br>
+    <div>
+      pypilot user manual 
+      <span><a href='/doc/pypilot_user_manual'>(html)</a> </span>
+      <span><a href='/doc/pypilot_user_manual/pdf/pypilot_user_manual.pdf'>(pdf)</a></span>
+    </div>
+    <div>
+      pypilot_mfd user manual 
+      <span><a href='/doc/pypilot_mfd_user_manual'>(html)</a> </span>
+      <span><a href='/doc/pypilot_mfd_user_manual/pdf/pypilot_mfd_user_manual.pdf'>(pdf)</a></span>
+    </div>
+    </h2>
+  </div>
+</div>
 
-
-
-  pypilot mfd user manual
-  
-  Doc here
-</h2>
 {% endblock %}

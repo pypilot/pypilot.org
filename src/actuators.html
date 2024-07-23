@@ -1,12 +1,28 @@
 {% extends "layouts/base.html" %} 
 {% block content %}
-<h2>Actuators</h2>
-<p>pypilot supports almost any type of existing linear actuator.
-  <br>
+<p style="font-size: 1.5em">pypilot supports almost any type of existing linear actuator.</p>  A simple test would be to apply power to the wires in both polarities and ensure it moves both ways.
+<br>
+<ul style="font-size: 1.5em">
+  <li>linear actuators</li>
+  If attaching to a tiller pilot pin, you will need a thrust piece.  One method is to cut a short aluminum pipe to have a slot and put a delrin round rod in it.  This can be hose-clamped to the end of the linear actuator.   A small hole can be drilled into the side of the delrin to snap onto the tillerpilot pin.  These can also be 3d printed <a href="https://www.thingiverse.com/thing:6214410">sample 1</a> <a href="https://www.thingiverse.com/thing:3968010">sample 2</a>
   <ul>
-    <li>Small electro-mechanical linear actuators</li>
-    <li>Larger linear actuators</li>
-    <li>Wheel drives</li>
-    <li>Hydraulic systems</li>
+    <li>I really enjoy the following actuator on my boat.
+      <a href="https://www.aliexpress.us/item/2255800497051447.html">3500N 300mm stroke 170mm/s speed 12V 24V DC Electric linear actuator</a>
+      </li>
+    <li>The following is recommended for more powerful drives
+      <a href="https://www.firgelliauto.com/products/deluxe-rod-actuator?variant=846311507">Deluxe Rod Actuators</a>
+    </li>
+    <li>Larger linear actuator such as the raymarine type1/type2 reportedly work well with the mid/high power motor controllers with clutch outputs.</li>
   </ul>
+  <li>Wheel drives</li>
+  Wheel drives can typically be driven using belt and pulleys.  Some examples with pictures and video:
+  <a href="https://drive.google.com/drive/folders/1gQdn5CfSRA-6gI8DxIccYIzfLhcUEy5W">drive1</a>
+  <a href="https://drive.google.com/drive/folders/1MBQWEQxc9CofIDHMcLCAXvYBL9AK-y1M">drive2</a>
+  <br>
+  A 3D printed design for the <a href="wheel_drive.zip">wheel pulley</a>
+  <li>Hydraulic systems</li>
+  Any type of marine hydraulic steering system can be made to work with pypilot.  Typical systems include a reversing hydraulic pump controlled by the autopilot.
+  <br>
+  <a href="https://phoenixketch.blogspot.com/2019/01/pypilot-open-source-marine-autopilot.html">hydraulic steering phoenix ketch</a> using the Accu-Steer 12V HRP 35. 
+</ul>
 {% endblock %}
