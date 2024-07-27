@@ -51,6 +51,11 @@
           }
       });
 
+    mainImage.addEventListener('touchstart', function (e) {
+        var i = find_link(e);
+        if(i >= 0)
+            window.location.href = links[i][3];
+    });
     mainImage.addEventListener('click', function (e) {
         var i = find_link(e);
         if(i >= 0)
